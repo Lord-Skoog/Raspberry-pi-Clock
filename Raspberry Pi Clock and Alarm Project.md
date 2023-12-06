@@ -1,5 +1,6 @@
 For my final project of the semester I made a clock and alarm that displays using pygame. It uses a lot of imports, to explain I will go block by block of the code.
 .........................................................
+```python
 import time
 import pygame
 from pygame import mixer
@@ -13,6 +14,7 @@ songlist = ['alarm.mp3', 'monkey.mp3', 'walnut.mp3']
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setwarnings(False)
+```
 .........................................................
 
 this section of the code imports all of the functions needed for the program to run. We use time, datetime, and pygame for the clock portion.
@@ -20,20 +22,20 @@ this section of the code imports all of the functions needed for the program to 
 We use mixer, gpio, and random in addition to the previous to run the alarm.
 
 .........................................................
-
+```python
 RES = WIDTH, HEIGHT = 1024, 600   #resoloution of raspi screen i used
 pygame.init()
 surface = pygame.display.set_mode(RES)
 clock = pygame.time.Clock()
 
 font = pygame.font.SysFont('TimesNewRoman', 200)
-
+```
 .........................................................
 
 Above we start pygame, and set our font and text size that will display the time. 
 
 .........................................................
-
+```python
 def alarm():
     pygame.init()
     screen_size = (1024,600)
@@ -73,7 +75,7 @@ def alarm():
             time.sleep(20)
             exit()
     return True
-
+```
 .........................................................
 
 this is the alarm function. When a GPIO input is detected it starts the timer, currently the code is set to a 3 second timer. By chaging the value of 'time_left' we can lengthen that. You must put the desired amount of time in seconds. So 10 minutes would be a value of 600. The alarm will display them as minutes and not seconds until only 60 seconds remain. 
@@ -81,7 +83,7 @@ this is the alarm function. When a GPIO input is detected it starts the timer, c
 The 'else' if the if statement is triggered when we run out of time and the break ends. following that it will pick a random .mp3 file to play. It picks these from a list at the very beginning of the program clearly marked as 'SONGLIST'. as long as the mp3 files are in the same folder as the clock program. This is coded to cut the audio at 20 seconds, but you can adjust the length you want it to play for by edditing the final 'time.sleep' value. 
 
 .........................................................
-
+```python
 while True:
     if GPIO.input(21) != GPIO.HIGH:     #if button is pressed it stops the clock
         alarm()
@@ -99,8 +101,8 @@ while True:
     #if device time is military it will display military.
 
     pygame.display.flip()
-    clock.tick(20).........................................................
-
+    clock.tick(20)
+```
 .........................................................
 
 above is the final portion of the code, which is the clock code itself. value 't' is the current time, and then using pygame we display t in the same method as the device its running on. If it uses 24 hour time, so will the program, and so will 12 hour time. by default everything is black background and white font. This can be changed by editing 'pygame.Color' values. 
