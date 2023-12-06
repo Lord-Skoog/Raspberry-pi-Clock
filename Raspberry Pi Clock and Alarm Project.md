@@ -17,7 +17,7 @@ GPIO.setwarnings(False)
 ```
 .........................................................
 
-this section of the code imports all of the functions needed for the program to run. We use time, datetime, and pygame for the clock portion.
+This section of the code imports all of the functions needed for the program to run. We use time, datetime, and pygame for the clock portion.
 
 We use mixer, gpio, and random in addition to the previous to run the alarm.
 
@@ -78,7 +78,7 @@ def alarm():
 ```
 .........................................................
 
-this is the alarm function. When a GPIO input is detected it starts the timer, currently the code is set to a 3 second timer. By chaging the value of 'time_left' we can lengthen that. You must put the desired amount of time in seconds. So 10 minutes would be a value of 600. The alarm will display them as minutes and not seconds until only 60 seconds remain. 
+This is the alarm function. When a GPIO input is detected it starts the timer, currently the code is set to a 3 second timer. By chaging the value of 'time_left' we can lengthen that. You must put the desired amount of time in seconds. So 10 minutes would be a value of 600. The alarm will display them as minutes and not seconds until only 60 seconds remain. 
 
 The 'else' if the if statement is triggered when we run out of time and the break ends. following that it will pick a random .mp3 file to play. It picks these from a list at the very beginning of the program clearly marked as 'SONGLIST'. as long as the mp3 files are in the same folder as the clock program. This is coded to cut the audio at 20 seconds, but you can adjust the length you want it to play for by edditing the final 'time.sleep' value. 
 
@@ -105,9 +105,9 @@ while True:
 ```
 .........................................................
 
-above is the final portion of the code, which is the clock code itself. value 't' is the current time, and then using pygame we display t in the same method as the device its running on. If it uses 24 hour time, so will the program, and so will 12 hour time. by default everything is black background and white font. This can be changed by editing 'pygame.Color' values. 
+Above is the final portion of the code, which is the clock code itself. value 't' is the current time, and then using pygame we display t in the same method as the device its running on. If it uses 24 hour time, so will the program, and so will 12 hour time. by default everything is black background and white font. This can be changed by editing 'pygame.Color' values. 
 
 **CIRCUITS**
 
-this program is meant to be run on a raspberry pi, and use a touchscreen display. It also utilizes GPIO and a button. A picture of how to wire it will be attached in the same repository as this. It is very simple. Wire Voltage to 5 or 3.3 volts, G to ground, and S to GPIO pin 21, or the top right corer of the GPIO pin cluster. 
+This program is meant to be run on a raspberry pi, and use a touchscreen display. It also utilizes GPIO and a button. A picture of how to wire it will be attached in the same repository as this. It is very simple. Wire Voltage to 5 or 3.3 volts, G to ground, and S to GPIO pin 21, or the top right corer of the GPIO pin cluster. 
 
